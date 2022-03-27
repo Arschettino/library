@@ -1,9 +1,26 @@
-
-function Book(name, author, pages) {
-    this.name=name;
-    this.author=author;
-    this.pages=pages;
-    this.read=false;
+class Book {
+    constructor(name, author, pages) {
+        this._name = name;
+        this._author = author;
+        this._pages = pages;
+        this._read = false;
+    }
+    get name() {
+        return this._name;
+    }
+    get author() {
+        return this._author;
+    }
+    get pages() {
+        return this._pages;
+    }
+    get read() {
+        return this._read;
+    }
+    toggleRead(status) {
+        if (status) this._read = status;
+        else this._read = !this._read;
+    }
 }
 
 function addBookToLibrary(library, book) {
@@ -12,10 +29,6 @@ function addBookToLibrary(library, book) {
     displayLibrary(library);
 }
 
-Book.prototype.toggleRead = function (status) {
-    if(status) this.read = status;
-    else this.read = !this.read;
-}
 
 function displayLibrary(library) {
     const cardGrid = document.querySelector('.library');
